@@ -1,0 +1,517 @@
+@import "tailwindcss";
+
+:root {
+    --scrollbar-width: 0.35rem;
+    --scrollbar-radius: 0.2rem;
+
+    --main-header-height: 70px;
+    --main-body-height: calc(100% - var(--main-header-height));
+}
+
+:root.dark-theme {
+    --main-color: #0d1117;
+    --secondary-color: #202731;
+    --thirdary-color: #27313d;
+    --forthary-color: #374253;
+    --fifthary-color: #62666b;
+    --sixary-color: #9294965a;
+
+    --shallow-color: #1a1d2396;
+
+    --modal-shadow: 0px 0px 10px rgba(0, 0, 0, 0.55);
+
+    --main-text-color: #fafafa;
+    --secondary-text-color: #d8d8d8;
+    --thirdary-text-color: #ffffff8c;
+
+    --main-divider-color: #e6e6e630;
+    --scondary-divider-color: #e6e6e64f;
+
+    --main-frame-color: #1b232b;
+}
+
+:root.light-theme {
+    --main-color: #f8f9fb;
+    --secondary-color: #ffffff;
+    --thirdary-color: #eef1f5;
+    --forthary-color: #dbdfe4;
+
+    --shallow-color: #3333335b;
+
+    --modal-shadow: 0px 0px 10px rgba(0, 0, 0, 0.12);
+
+    --main-text-color: #1a1a1a;
+    --secondary-text-color: #4a5568;
+    --thirdary-text-color: #5f69799f;
+
+    --main-divider-color: #d6d9de50;
+
+    --main-frame-color: #e9edf2;
+}
+
+:root.dark-theme.blue-theme {
+    --main-interactive-color-v1: #3d9dec;
+    --main-interactive-color-v2: #2383d1;
+    --main-interactive-color-v3: #1c5a8d;
+    --chart-color-1: #3d9dec;
+    --chart-color-2: #5dcaa5;
+    --chart-color-3: #ef9f27;
+    --chart-color-4: #d4537e;
+    --chart-color-5: #7f77dd;
+}
+
+:root.light-theme.blue-theme {
+    --main-interactive-color-v1: #2f7fc4;
+    --main-interactive-color-v2: #256aa6;
+    --main-interactive-color-v3: #1f4f7a;
+    --chart-color-1: #2f7fc4;
+    --chart-color-2: #1d9e75;
+    --chart-color-3: #ba7517;
+    --chart-color-4: #993556;
+    --chart-color-5: #534ab7;
+}
+
+:root.dark-theme.orange-theme {
+    --main-interactive-color-v1: #e07a2f;
+    --main-interactive-color-v2: #c9651f;
+    --main-interactive-color-v3: #8f4315;
+    --chart-color-1: #e07a2f;
+    --chart-color-2: #3d9dec;
+    --chart-color-3: #5dcaa5;
+    --chart-color-4: #d4537e;
+    --chart-color-5: #7f77dd;
+}
+
+:root.light-theme.orange-theme {
+    --main-interactive-color-v1: #d97a2b;
+    --main-interactive-color-v2: #bf641f;
+    --main-interactive-color-v3: #8c4a18;
+    --chart-color-1: #d97a2b;
+    --chart-color-2: #2f7fc4;
+    --chart-color-3: #1d9e75;
+    --chart-color-4: #993556;
+    --chart-color-5: #534ab7;
+}
+
+:root.dark-theme.pink-theme {
+    --main-interactive-color-v1: #e0569a;
+    --main-interactive-color-v2: #c84586;
+    --main-interactive-color-v3: #8f2f5f;
+    --chart-color-1: #e0569a;
+    --chart-color-2: #3d9dec;
+    --chart-color-3: #5dcaa5;
+    --chart-color-4: #ef9f27;
+    --chart-color-5: #7f77dd;
+}
+
+:root.light-theme.pink-theme {
+    --main-interactive-color-v1: #d94f92;
+    --main-interactive-color-v2: #b83f7a;
+    --main-interactive-color-v3: #7f2b54;
+    --chart-color-1: #d94f92;
+    --chart-color-2: #2f7fc4;
+    --chart-color-3: #1d9e75;
+    --chart-color-4: #ba7517;
+    --chart-color-5: #534ab7;
+}
+
+#root {
+    position: relative;
+    overflow: hidden;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+/* Scrollbar styling for Electron (Webkit-based) */
+*::-webkit-scrollbar {
+    width: var(--scrollbar-width); /* slightly thicker for visibility */
+    background-color: var(--forthary-color);
+    border-radius: var(--scrollbar-radius); /* rounded edges */
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: var(--fifthary-color);
+    border-radius: var(--scrollbar-radius);
+    transition: background 0.2s ease-in-out;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+    background-color: var(--sixary-color);
+}
+*:focus {
+    outline: none;
+}
+
+*:focus-visible {
+    outline: 1px solid var(--main-text-color);
+}
+
+*:disabled {
+    @apply cursor-not-allowed! grayscale-[1]!;
+}
+
+/* Utility */
+
+.btn {
+    @apply cursor-pointer transition-colors;
+}
+
+.btn-icon {
+    @apply flex items-center gap-3;
+}
+
+.btn-main {
+    @apply bg-(--main-interactive-color-v2) hover:bg-(--main-interactive-color-v1) text-white;
+}
+
+.btn-main-outline {
+    @apply border border-(--main-interactive-color-v2) text-(--main-interactive-color-v2) hover:bg-(--main-interactive-color-v3) hover:text-(--main-text-color);
+}
+
+.btn-sm {
+    @apply text-sm p-0.5 rounded-sm;
+}
+
+.btn-md {
+    @apply text-lg p-1.5 rounded-lg;
+}
+
+.btn-lg {
+    @apply text-xl p-2 rounded-xl;
+}
+
+.btn-danger {
+    @apply bg-red-500 text-white border border-red-400;
+}
+
+.btn-danger:hover {
+    @apply bg-red-600 border-red-600;
+}
+
+.btn-danger-outline {
+    @apply bg-transparent text-red-500 border border-red-500;
+}
+
+.btn-danger-outline:hover {
+    @apply bg-red-600 text-white;
+}
+
+/* Main window */
+.frame {
+    @apply bg-(--main-frame-color) h-7.5 flex justify-end fixed top-0 transition-colors;
+    position: relative;
+    z-index: 9999;
+    box-shadow: 0px 0px 15px #0000006e;
+}
+
+.applayout {
+    @apply bg-(--main-color) text-(--main-text-color) h-dvh overflow-auto transition-colors;
+}
+
+.dragable {
+    -webkit-app-region: drag;
+}
+
+.main-window {
+    @apply h-[calc(100dvh-(var(--spacing)*7.5))] flex relative overflow-auto transition-colors;
+}
+
+/* Main Application */
+.sidebar {
+    @apply z-[10] border-e border-(--main-divider-color) bg-(--secondary-color) w-30 transition-colors h-[100%] flex flex-col justify-between py-10;
+}
+
+.main-content {
+    @apply bg-(--main-color) w-[calc(100%-var(--spacing)*30)] transition-colors overflow-auto;
+}
+
+.nav-item {
+    @apply transition-all cursor-pointer;
+}
+
+/* 7-segment Fonts */
+@font-face {
+    font-family: "DSEG7";
+    src: url("/src/assets/fonts/DSEG7/DSEG7Classic-Regular.ttf")
+        format("truetype");
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "DSEG7";
+    src: url("/src/assets/fonts/DSEG7/DSEG7Classic-Bold.ttf") format("truetype");
+    font-weight: 700;
+    font-style: normal;
+}
+
+.font-DSEG7 {
+    font-family: "DSEG7";
+    src: url("/src/assets/fonts/DSEG7/DSEG7Classic-Regular.ttf")
+        format("truetype");
+    font-weight: 400;
+    font-style: normal;
+}
+
+.font-DSEG7-bold {
+    font-family: "DSEG7";
+    src: url("/src/assets/fonts/DSEG7/DSEG7Classic-Bold.ttf") format("truetype");
+    font-weight: 700;
+    font-style: normal;
+}
+
+/* Tables */
+
+.session-table-wrapper {
+    background: var(--main-color);
+    padding: 12px;
+    border-radius: 6px;
+}
+
+.session-table-wrapper * {
+    @apply transition-colors;
+}
+
+/* =========================
+   TABLE BASE STYLING
+========================= */
+
+.session-table .ant-table {
+    background: var(--secondary-color);
+    color: var(--main-text-color);
+}
+
+/* IMPORTANT: fixes layered white backgrounds */
+.session-table .ant-table-container,
+.session-table .ant-table-content {
+    background: var(--secondary-color);
+}
+
+/* header */
+.session-table .ant-table-thead > tr > th {
+    background: var(--thirdary-color);
+    color: var(--main-text-color);
+    border-bottom: 1px solid var(--main-divider-color);
+}
+
+/* header hover (sort interaction) */
+.session-table .ant-table-thead th {
+    @apply transition-colors!;
+}
+.session-table .ant-table-thead th.ant-table-column-has-sorters:hover {
+    background: var(--forthary-color) !important;
+}
+
+/* rows */
+.session-table .ant-table-tbody > tr > td {
+    background: var(--secondary-color);
+    border-bottom: 1px solid var(--main-divider-color);
+    color: var(--main-text-color);
+}
+
+/* row hover */
+.session-table .ant-table-tbody td {
+    @apply transition-colors!;
+}
+
+.session-table .ant-table-tbody > tr:hover > td {
+    background: var(--forthary-color) !important;
+}
+
+.session-table .ant-table-cell-row-hover {
+    background: var(--forthary-color) !important;
+}
+
+/* sorted column highlight */
+.session-table .ant-table-column-sort {
+    background: var(--thirdary-color) !important;
+}
+
+/* empty state fix (white gap issue) */
+.session-table .ant-table-placeholder {
+    background: var(--secondary-color);
+}
+
+.session-table .ant-table-tbody > tr.ant-table-placeholder:hover > td {
+    background: var(--secondary-color) !important;
+}
+
+/* =========================
+   PAGINATION
+========================= */
+
+.session-table .ant-pagination {
+    color: var(--main-text-color);
+}
+
+.session-table .ant-pagination-item {
+    background: var(--thirdary-color);
+    border: none;
+}
+
+.session-table .ant-pagination-item a {
+    color: var(--main-text-color);
+}
+
+.session-table .ant-pagination-item-active {
+    border: 1px solid var(--main-interactive-color-v1);
+}
+
+.session-table .ant-pagination-item-active a {
+    color: var(--main-interactive-color-v1);
+}
+
+.session-table .ant-pagination-item-ellipsis {
+    background: var(--thirdary-color);
+    color: var(--main-text-color) !important;
+    border-radius: 4px;
+}
+
+.session-table .ant-pagination-prev button,
+.session-table .ant-pagination-next button {
+    color: var(--main-text-color);
+}
+
+/* Sorter arrows — force white */
+.session-table .ant-table-column-sorter-up,
+.session-table .ant-table-column-sorter-down,
+.session-table .ant-table-column-sorter-up.active,
+.session-table .ant-table-column-sorter-down.active {
+    color: var(--main-text-color) !important;
+}
+
+.session-table .ant-table-column-sorter-up svg,
+.session-table .ant-table-column-sorter-down svg {
+    fill: var(--main-text-color) !important;
+}
+
+/* Pagination prev/next arrows visible */
+.session-table .ant-pagination-prev .ant-pagination-item-link,
+.session-table .ant-pagination-next .ant-pagination-item-link {
+    background: var(--thirdary-color);
+    border: none;
+    color: var(--main-text-color) !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+}
+
+.session-table .ant-pagination-disabled .ant-pagination-item-link {
+    color: var(--fifthary-color) !important;
+}
+
+.session-table .ant-empty-description {
+    color: var(--main-text-color) !important;
+}
+
+/* Scrollbar */
+.ant-table-body {
+    /* scrollbar-width: thin; */
+    scrollbar-color: var(--main-interactive-color-v1) var(--thirdary-color);
+}
+
+.ant-table-body::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+.ant-table-body::-webkit-scrollbar-track {
+    background-color: var(--thirdary-color);
+    border-radius: var(--scrollbar-radius);
+}
+
+.ant-table-body::-webkit-scrollbar-thumb {
+    background-color: var(--main-interactive-color-v1);
+    border-radius: var(--scrollbar-radius);
+}
+
+.ant-table-body::-webkit-scrollbar-thumb:hover {
+    filter: brightness(1.2);
+}
+
+/* Chart card shared styles */
+.chart-card {
+    background: var(--secondary-color);
+    border-radius: 12px;
+    padding: 1.25rem;
+    min-height: 0; /* Add this - critical for flex/grid children */
+}
+
+.chart-card-title {
+    font-weight: 500;
+    color: var(--main-text-color);
+    margin: 0 0 1rem;
+    @apply text-xl text-(--main-interactive-color-v1);
+}
+
+.top-categories-inner {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    min-height: 0; /* Add this */
+}
+
+.pie-wrapper {
+    width: 220px;
+    height: 220px;
+    flex-shrink: 0;
+}
+
+.pie-legend {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex: 1;
+}
+
+.pie-legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+}
+
+.pie-legend-swatch {
+    width: 10px;
+    height: 10px;
+    border-radius: 2px;
+    flex-shrink: 0;
+}
+
+.pie-legend-label {
+    flex: 1;
+    color: var(--secondary-text-color);
+}
+
+.pie-legend-pct {
+    color: var(--thirdary-text-color);
+    font-size: 12px;
+}
+
+.line-wrapper {
+    width: 100%;
+    height: 240px;
+}
+
+.chart-tooltip {
+    background: var(--secondary-color);
+    border: 1px solid var(--main-divider-color);
+    border-radius: 8px;
+    padding: 8px 12px;
+}
+
+.chart-tooltip-title {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--main-text-color);
+    margin: 0 0 2px;
+}
+
+.chart-tooltip-value {
+    font-size: 12px;
+    color: var(--secondary-text-color);
+    margin: 0;
+}
