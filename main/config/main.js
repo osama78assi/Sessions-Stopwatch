@@ -1,16 +1,18 @@
 import { app } from "electron";
 import {
+    appendFileSync,
     existsSync,
     mkdir,
     mkdirSync,
+    readFileSync,
     readdirSync,
     writeFile,
     writeFileSync,
 } from "fs";
 import { readFile } from "fs/promises";
-import { join } from "path";
+import { dirname, join } from "path";
 import { cwd } from "process";
-import { pathToFileURL } from "url";
+import { fileURLToPath, pathToFileURL } from "url";
 
 // Check database file if exists or not and create it
 export function getDatabasePath() {
@@ -61,7 +63,7 @@ export async function runMigrations(sequelize) {
     const applied = new Set(rows.map((r) => r.name));
 
     // 3. Load migration files
-    const dir = join(process.cwd(), "migrations");
+    const dir = join(dirname(fileURLToPath(import.meta.url)), "../migrations");
 
     const files = readdirSync(dir)
         .filter((f) => f.endsWith(".js"))
@@ -136,4 +138,25 @@ export function disableShortcuts(mainWindow) {
             event.preventDefault();
         }
     });
+}
+
+export function log(...messages) {
+    // In development log to the console
+    if (!app.isPackaged) {
+        console.log("\n#############\n", ...message, "\n#############\n");
+        return;
+    }
+
+    if (!existsSync(join(app.getPath("userData"), "stopwatch"))) {
+        mkdirSync(join(app.getPath("userData"), "stopwatch"));
+    }
+
+    let all = messages
+        .map((message) => `${new Date().toISOString()} ${message}\n`)
+        .join("");
+
+    appendFileSync(
+        join(app.getPath("userData"), "stopwatch/sessions-stopwatch-logs.txt"),
+        all,
+    );
 }
