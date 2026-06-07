@@ -1,5 +1,5 @@
 {
-    "name": "main",
+    "name": "sessions-stopwatch",
     "version": "1.0.0",
     "description": "",
     "license": "ISC",
@@ -12,7 +12,7 @@
     },
     "build": {
         "appId": "com.osama.sessionsStopwatch",
-        "productName": "Sessison Stopwatch",
+        "productName": "Sessions Stopwatch",
         "directories": {
             "output": "release"
         },
