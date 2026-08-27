@@ -1,4 +1,4 @@
-<p align="center">
+<p style="display: flex; justify-content: center; align-items: center">
   <img src="./imgs/logo.png" width="32">
   <strong>Session-Stopwatch</strong>
 </p>
