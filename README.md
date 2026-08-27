@@ -1,7 +1,7 @@
-# Session-Stopwatch
+<img src="imgs/icon.png" width="32"> ## Session-Stopwatch
 this is a simple desktop application I use to measure and analyze the time I spend on something, usually I use it to track my study time, and in the end of every month/week I check how much time I spent, how many times I got distracted and some other statistical things
 
-# How it works
+## How it works
 it's very simple, open the app. click start, whenever you want to stop the session click stop. While you can organize it a little bit, like every stopwatch is a day, and every session... well you got a create session button
 ![Main](imgs/main_interface.png)
 
@@ -21,7 +21,7 @@ the application is build with:
 - React JS
 - SQLite
 
-# Building the Project
+## Building the Project
 I used `electron-builder` to build the project for my operating system, you can use your own
 
 
@@ -49,12 +49,12 @@ Then update the build section in package.json to include the binaries:
 ```
 Make sure you download the binaries appropriate for the OS you're building for.
 
-# Got an Idea ?
+## Got an Idea ?
 The application is free and open-source. If you'd like to contribute feel free to submit a pull request
 
 # Faced a Bug ?
 If you encounter any bugs, please report them in the issues sections
 
-# License
+## License
 
 This project is open source and licensed under the [MIT License](LICENSE).
