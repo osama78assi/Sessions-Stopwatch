@@ -1,8 +1,6 @@
-<p align="center"> 
-  <span> 
-    <img src="./imgs/logo.png" width="32"> 
-    <strong>Session-Stopwatch</strong> 
-  </span> 
+<p align="center">
+  <img src="./imgs/logo.png" width="32" style="position: relative; top: 6px;">
+  <strong>Session-Stopwatch</strong>
 </p>
 
 
