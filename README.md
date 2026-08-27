@@ -1,4 +1,9 @@
-<img src="./imgs/logo.png" width="32"> ## Session-Stopwatch
+<p align="center">
+  <img src="./imgs/logo.png" width="32">
+  <strong>Session-Stopwatch</strong>
+</p>
+
+## Session-Stopwatch
 this is a simple desktop application I use to measure and analyze the time I spend on something, usually I use it to track my study time, and in the end of every month/week I check how much time I spent, how many times I got distracted and some other statistical things
 
 ## How it works
