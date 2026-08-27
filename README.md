@@ -5,20 +5,32 @@
   </tr>
 </table>
 
+## Session-Stopwatch
 this is a simple desktop application I use to measure and analyze the time I spend on something, usually I use it to track my study time, and in the end of every month/week I check how much time I spent, how many times I got distracted and some other statistical things
 
 ## How it works
 it's very simple, open the app. click start, whenever you want to stop the session click stop. While you can organize it a little bit, like every stopwatch is a day, and every session... well you got a create session button
-![Main](imgs/main_interface.png)
+<p align="center">
+  <img src="./imgs/main_interface.png" width="800">
+</p>
+
 
 once you finished you can either check the sessions you have registered via table view, and you can filter by many criteria 
-![Dashboard](imgs/dashboard_interface.png)
+<p align="center">
+  <img src="./imgs/dashboard_interface.png" width="800">
+</p>
+
 
 or you can check the statistics from the statistics view and you can filter by many criteria
-![Statistics](imgs/statistics_interface.png)
+<p align="center">
+  <img src="./imgs/statistics_interface.png" width="800">
+</p>
+
 
 the Application is really lightweight so you can run it with anything you are doing
-![Process](imgs/process.png)
+<p align="center">
+  <img src="./imgs/process.png" width="800">
+</p>
 
 
 the application is build with:
