@@ -1,7 +1,9 @@
-<p align="center">
-  <img src="./imgs/logo.png" width="32" style="position: relative; top: 6px;">
-  <strong>Session-Stopwatch</strong>
-</p>
+<table>
+  <tr>
+    <td><img src="./imgs/logo.png" width="32"></td>
+    <td><strong>Session-Stopwatch</strong></td>
+  </tr>
+</table>
 
 this is a simple desktop application I use to measure and analyze the time I spend on something, usually I use it to track my study time, and in the end of every month/week I check how much time I spent, how many times I got distracted and some other statistical things
 
